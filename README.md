@@ -19,13 +19,30 @@ Each run takes listings through a series of stages. A listing's `state`
 records how far it got, so a run that stops partway (time cap, rate limit)
 picks up where it left off next time. Nothing has to be redone.
 
-```
- intake ──► stub filters ──► enrichment ──► hard filters ──► scoring ──► notify
-   │             │               │                │              │
- RSS/API      title,         fetch the      salary, stack,   Claude Sonnet
- HTML pages   location       full posting   location         vs. resume +
- IMAP email                  (or flag it as                   your criteria
-                             needing a browser)
+```mermaid
+flowchart LR
+    A["<b>1. Intake</b><br/>RSS / APIs, career pages,<br/>job-alert emails (IMAP)<br/><i>duplicates merged</i>"]
+    B["<b>2. Stub filters</b><br/>title and location rules"]
+    C["<b>3. Enrichment</b><br/>fetch full posting;<br/>flag login walls and<br/>bot checks as needs-browser"]
+    D["<b>4. Hard filters</b><br/>salary, tech stack,<br/>location eligibility"]
+    E["<b>5. Scoring</b> 🤖<br/>Claude rates Strong / Medium / Weak<br/>vs. your resume and criteria"]
+    F["<b>6. Notify</b><br/>push notification<br/>for Strong matches"]
+
+    A --> B --> C --> D --> E --> F
+
+    classDef intake fill:#3B82F6,stroke:#1E40AF,color:#fff
+    classDef stub fill:#14B8A6,stroke:#0F766E,color:#fff
+    classDef enrich fill:#22C55E,stroke:#15803D,color:#fff
+    classDef hard fill:#F59E0B,stroke:#B45309,color:#fff
+    classDef score fill:#8B5CF6,stroke:#5B21B6,color:#fff
+    classDef notify fill:#EF4444,stroke:#B91C1C,color:#fff
+
+    class A intake
+    class B stub
+    class C enrich
+    class D hard
+    class E score
+    class F notify
 ```
 
 1. **Intake.** Built-in adapters read job boards (We Work Remotely, LaraJobs,
