@@ -1,6 +1,6 @@
 # <img src="public/favicon.svg" alt="" width="36" align="top"> Magpie
 
-[![CI](https://github.com/misterpowerful/magpie/actions/workflows/ci.yml/badge.svg)](https://github.com/misterpowerful/magpie/actions/workflows/ci.yml)
+[![CI](https://github.com/shane-coleman-dev/magpie/actions/workflows/ci.yml/badge.svg)](https://github.com/shane-coleman-dev/magpie/actions/workflows/ci.yml)
 
 Magpie is a self-hosted job-search pipeline. Three times a week it collects
 new listings from job boards, company career pages and job-alert emails. It
