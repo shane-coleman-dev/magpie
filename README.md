@@ -188,3 +188,7 @@ php artisan magpie:process-emails           # email intake only
 php artisan magpie:check-confirmations      # scan for application confirmations
 php artisan test                            # the test suite
 ```
+
+## License
+
+MIT, see [LICENSE](LICENSE).
